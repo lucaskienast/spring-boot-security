@@ -25,7 +25,7 @@ public class Role {
     @Column(name = "NAME")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Collection<User> users = new ArrayList<>();
 
 }

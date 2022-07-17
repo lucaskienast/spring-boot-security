@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -39,7 +38,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
 
         LOG.info("CustomAuthorizationFilter doFilterInternal request -> {}", request);
 
-        if (request.getServletPath().equals("/api/login")) {
+        if (request.getServletPath().equals("/api/login") || request.getServletPath().equals("/api/token/refresh")) {
             LOG.info("CustomAuthorizationFilter servletPath equals /api/login -> doFilter");
             filterChain.doFilter(request, response);
 
